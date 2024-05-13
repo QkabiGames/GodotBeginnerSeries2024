@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://cupokg40ncq25"]
+
+[ext_resource type="PackedScene" uid="uid://p1q5x1l7vtj3" path="res://test/Test.tscn" id="1_ojc7r"]
+[ext_resource type="PackedScene" uid="uid://blgr1s3rximj5" path="res://src/Player/Player.tscn" id="1_yietn"]
+[ext_resource type="PackedScene" uid="uid://myxt4556pvdi" path="res://src/Tube/Platform.tscn" id="2_mlf7s"]
+
+[node name="PlayerTest" instance=ExtResource("1_ojc7r")]
+
+[node name="Camera3D2" type="Camera3D" parent="." index="1"]
+transform = Transform3D(0.720577, -0.131089, 0.68087, 0, 0.981966, 0.189059, -0.693375, -0.136232, 0.707582, 3.35775, 2.30303, 3.66466)
+
+[node name="Player" parent="." index="2" instance=ExtResource("1_yietn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Platform" parent="." index="3" instance=ExtResource("2_mlf7s")]

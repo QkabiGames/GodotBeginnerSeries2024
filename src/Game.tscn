@@ -1,0 +1,60 @@
+[gd_scene load_steps=10 format=3 uid="uid://d2wt5xbjwgcro"]
+
+[ext_resource type="Script" path="res://src/Game.cs" id="1_ip7q4"]
+[ext_resource type="PackedScene" uid="uid://cml8bmx1yeuda" path="res://src/Tube/Tube.tscn" id="1_pb2ll"]
+[ext_resource type="PackedScene" uid="uid://blgr1s3rximj5" path="res://src/Player/Player.tscn" id="2_51n3r"]
+[ext_resource type="PackedScene" uid="uid://c6m5q11wcqx51" path="res://src/UI/UI.tscn" id="4_ipefh"]
+[ext_resource type="PackedScene" uid="uid://bkmeuq8f3rm0n" path="res://src/Save/SaveManager.tscn" id="5_mudgl"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lqa65"]
+sky_top_color = Color(0.0627451, 0.490196, 0.639216, 1)
+sky_horizon_color = Color(0.309804, 0.741176, 0.631373, 1)
+sky_curve = 0.356762
+ground_bottom_color = Color(0.670588, 0.72549, 0.466667, 1)
+ground_horizon_color = Color(0.309804, 0.741176, 0.631373, 1)
+ground_curve = 0.710119
+
+[sub_resource type="Sky" id="Sky_saj0n"]
+sky_material = SubResource("ProceduralSkyMaterial_lqa65")
+
+[sub_resource type="Environment" id="Environment_7vfar"]
+background_mode = 2
+background_energy_multiplier = 1.2
+sky = SubResource("Sky_saj0n")
+fog_light_color = Color(0.509804, 0.560784, 0.733333, 1)
+fog_sky_affect = 0.079
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uvrfd"]
+
+[node name="Game" type="Node" node_paths=PackedStringArray("_tube", "_player", "_gameOverArea", "_ui", "_saveManager")]
+script = ExtResource("1_ip7q4")
+_tube = NodePath("Tube")
+_player = NodePath("Player")
+_gameOverArea = NodePath("GameOverArea3D")
+_ui = NodePath("UI")
+_saveManager = NodePath("SaveManager")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_7vfar")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.329509, -0.691755, 0.642571, 1.63427e-08, 0.68058, 0.732674, -0.944152, -0.241423, 0.224258, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984807, 0, -0.5, 4)
+
+[node name="Tube" parent="." instance=ExtResource("1_pb2ll")]
+
+[node name="Player" parent="." instance=ExtResource("2_51n3r")]
+
+[node name="GameOverArea3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GameOverArea3D"]
+shape = SubResource("BoxShape3D_uvrfd")
+
+[node name="UI" parent="." instance=ExtResource("4_ipefh")]
+
+[node name="SaveManager" parent="." instance=ExtResource("5_mudgl")]

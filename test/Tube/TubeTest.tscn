@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmpwy63u7no31"]
+
+[ext_resource type="PackedScene" uid="uid://p1q5x1l7vtj3" path="res://test/Test.tscn" id="1_a2xm4"]
+[ext_resource type="PackedScene" uid="uid://cml8bmx1yeuda" path="res://src/Tube/Tube.tscn" id="2_0tnd4"]
+[ext_resource type="Script" path="res://test/Tube/TubeTest.cs" id="2_yg0gd"]
+[ext_resource type="PackedScene" uid="uid://blgr1s3rximj5" path="res://src/Player/Player.tscn" id="3_f7ujg"]
+
+[node name="TubeTest" node_paths=PackedStringArray("_tube") instance=ExtResource("1_a2xm4")]
+script = ExtResource("2_yg0gd")
+_tube = NodePath("Tube")
+
+[node name="Camera3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984807, 0, -0.5, 5)
+
+[node name="Tube" parent="." index="2" instance=ExtResource("2_0tnd4")]
+
+[node name="Player" parent="." index="3" instance=ExtResource("3_f7ujg")]

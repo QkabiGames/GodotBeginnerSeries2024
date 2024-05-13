@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cml8bmx1yeuda"]
+
+[ext_resource type="Script" path="res://src/Tube/Tube.cs" id="1_r6o85"]
+[ext_resource type="PackedScene" uid="uid://myxt4556pvdi" path="res://src/Tube/Platform.tscn" id="2_f3l28"]
+
+[node name="Tube" type="Node3D"]
+script = ExtResource("1_r6o85")
+_platformScene = ExtResource("2_f3l28")

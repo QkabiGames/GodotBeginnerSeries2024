@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://myxt4556pvdi"]
+
+[ext_resource type="Script" path="res://src/Tube/Platform.cs" id="1_ofvha"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_twemj"]
+transparency = 1
+albedo_color = Color(0.917647, 0.764706, 0.611765, 0.705882)
+
+[sub_resource type="BoxMesh" id="BoxMesh_te4hw"]
+size = Vector3(2, 0.2, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ygy0l"]
+size = Vector3(2, 0.2, 2)
+
+[node name="Platform" type="StaticBody3D" node_paths=PackedStringArray("_area", "_player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+collision_layer = 2
+script = ExtResource("1_ofvha")
+_area = NodePath("Area3D")
+_player = NodePath("AudioStreamPlayer")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_twemj")
+mesh = SubResource("BoxMesh_te4hw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_ygy0l")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+shape = SubResource("BoxShape3D_ygy0l")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

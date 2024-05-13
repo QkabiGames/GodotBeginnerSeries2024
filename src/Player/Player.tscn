@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://blgr1s3rximj5"]
+
+[ext_resource type="Script" path="res://src/Player/Player.cs" id="1_r0d4r"]
+[ext_resource type="AudioStream" uid="uid://b7822s40qche0" path="res://src/Tube/Resources/key01.mp3" id="2_ak4df"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ijqws"]
+albedo_color = Color(1, 0.678431, 0.482353, 1)
+metallic = 1.0
+roughness = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_wdmmm"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_e0o16"]
+
+[node name="Player" type="RigidBody3D" node_paths=PackedStringArray("_mesh")]
+collision_mask = 2
+axis_lock_linear_x = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+lock_rotation = true
+freeze = true
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_r0d4r")
+_mesh = NodePath("MeshInstance3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_ijqws")
+mesh = SubResource("SphereMesh_wdmmm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_e0o16")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ak4df")
