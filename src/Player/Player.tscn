@@ -20,7 +20,6 @@ axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 lock_rotation = true
-freeze = true
 max_contacts_reported = 1
 contact_monitor = true
 script = ExtResource("1_r0d4r")
