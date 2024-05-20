@@ -43,6 +43,7 @@ shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984807, 0, -0.5, 4)
+current = true
 
 [node name="Tube" parent="." instance=ExtResource("1_pb2ll")]
 

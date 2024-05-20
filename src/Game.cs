@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 namespace GodotBeginnerSeries2024;
 
@@ -17,9 +16,6 @@ public partial class Game : Node {
 
     private int _score;
     private int _highScore;
-
-    public event Action<int> ScoreUpdated = delegate { };
-    public event Action GameOver = delegate { };
 
     public override void _Ready() {
         _ui.RestartRequested += Restart;

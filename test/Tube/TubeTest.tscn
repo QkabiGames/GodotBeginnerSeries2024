@@ -10,7 +10,7 @@ script = ExtResource("2_yg0gd")
 _tube = NodePath("Tube")
 
 [node name="Camera3D" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984807, 0, -0.5, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 5)
 
 [node name="Tube" parent="." index="2" instance=ExtResource("2_0tnd4")]
 
